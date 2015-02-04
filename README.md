@@ -1,6 +1,6 @@
 # js-cooperhewitt-images
 
-Image layout functionality as used on the [Cooper Hewitt Online Collections](http://collection.cooperhewitt.org). See `example.html` for examples.
+Image layout functionality as used on the [Cooper Hewitt Online Collections](http://collection.cooperhewitt.org). Check out the [live demo](https://cooperhewitt.github.io/js-cooperhewitt-images/).
 
 ## Thumbnail Grids: `jquery.imageGrid.js`
 
