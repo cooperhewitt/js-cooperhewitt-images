@@ -1,9 +1,9 @@
 // jQuery Image Grid Plugin
 
 (function($) {
-	var _initThumbnailImageRollovers = function() {
-		var $thumbnailsHolder = $('.thumbnails');
-		var $thumbnails = $('.thumbnail');
+	var _initThumbnailImageRollovers = function($el) {
+		var $thumbnailsHolder = $el;
+		var $thumbnails = $thumbnailsHolder.find('.thumbnail');
 
 		if($thumbnails.length == 0) return;
 
@@ -93,7 +93,7 @@
 
 	
 	$.fn.imageGrid = function() {
-		_initThumbnailImageRollovers();
+		_initThumbnailImageRollovers(this);
 	};
 })(jQuery);
 
