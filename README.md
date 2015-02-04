@@ -4,7 +4,7 @@ Image layout functionality as used on the [Cooper Hewitt Online Collections](htt
 
 ## Thumbnail Grids: `jquery.imageGrid.js`
 
-`jquery.imageGrid.js` creates a grid of square thumbnails with rollover functionality. It assumes your markup is structured thusly:
+`jquery.imageGrid.js` creates a grid of square thumbnails with rollover functionality. It assumes your markup is structured like this:
 
 ```
 <ul id="myImageGrid" class="thumbnails">
@@ -31,3 +31,27 @@ While the thumbnails are always square, they are capable of displaying non-squar
 ### Other notes:
 * Removing `data-allow-redraw` from within a `li.thumbnail` will disable the rollover code for an individual thumbnail.
 * The `a href` doesn't have to be `#` - make it whatever URL you want.
+* This code will work from within `$(document).ready()` but I've been using it from `$(window).load()` so that the rollovers don't invoke on half-loaded images. Probably the right way to do this would be to handle loading in JS for every thumbnail (pull requests accepted!) and stagger the binding of events.
+
+
+## Image Preloading and Resizing: `jquery.imageDisplayer.js`
+
+`jquery.imageDisplayer.js` allows users with JS enabled to see a low-res image while they are waiting for the full one to load. On load, it allows them to toggle between a collapsed and expanded state. It assumes your markup is structured like this:
+
+```
+<div id="myImageDisplayer" class="picture-holder" data-image-full-src="images/cat_full.jpg" data-image-loading-src="images/cat_load.gif">
+  <a href="images/cat_full.jpg">
+    <img src="images/cat_full.jpg" data-allow-redraw />
+  </a>
+</div>
+```
+
+You can configure some parameters using the `data` attributes on `.picture-holder`:
+* `data-image-loading-src`: The source of the image to use while the big one is loading.
+
+## Expanding / Collapsing
+The code will toggle two class names, `expanded` and `collapsed`, on clicking the image. Style them accordingly.
+
+### Other notes:
+*The source of the full-sized image should be the one set as the `src` of the `<img>` element. This way, the page won't look broken for non-JS users.
+*You should invoke this code from within `$(document).ready()` so that the code can add in the loading image before it loads the fullsized one.

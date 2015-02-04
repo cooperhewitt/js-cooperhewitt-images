@@ -5,10 +5,15 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="jquery.imageGrid.js"></script>
+    <script type="text/javascript" src="jquery.imageDisplayer.js"></script>
 
     <script type="text/javascript">
       $(window).load(function(){
         $('#imageGrid').imageGrid();
+      });
+
+      $(document).ready(function(){
+        $('#imageDisplayer').imageDisplayer();
       });
     </script>
 
@@ -16,12 +21,16 @@
 
     <!-- these styles make the example look better but don't necessarily belong in the codebase itself. -->
     <style>
-      .thumbnail { display: inline-block; margin: 10px; }
+      .picture-holder .collapsed { height: 320px; }
+      .thumbnail { display: inline-block; margin-right: 10px; }
+      a { border: 2px solid #000; }
+      ul { margin: 0; padding: 0; }
     </style>
   </head>
 
   <body>
     <h1>Image Grid</h1>
+    <p>Rollover images to see toggled states</p>
     <ul id="imageGrid" class="thumbnails" data-mouseout-image-size="out" data-mouseout-class-name="out" data-mouseover-image-size="over" data-mouseover-class-name="over">
       <li class="thumbnail">
 	<a href="#">
@@ -34,5 +43,14 @@
 	</a>
       </li>
     </ul>
+
+    <h1>Image Displayer</h1>
+    <p>Click to toggle sizes, simulate a slow network connection to see preload state</p>
+    <div id="imageDisplayer" class="picture-holder" data-image-loading-src="images/cat_load.gif">
+      <a href="images/cat_full.jpg">
+	<img src="images/cat_full.jpg" data-allow-redraw />
+      </a>
+    </div>
+
   </body>
 </html>
