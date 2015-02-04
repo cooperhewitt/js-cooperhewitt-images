@@ -1,0 +1,8 @@
+.hidden { display: none; }
+
+/* Image Grid */
+.thumbnail { max-width: 350px; }
+.thumbnail .image-wrapper { height: 0px; padding-bottom: 100%; position: relative; width: 100%; }
+.thumbnail .image-wrapper a { border: 2px solid #000; display: block; height: 100%; overflow: hidden; position: absolute; text-align: center; width: 100%;}
+.thumbnail .image-wrapper img { position: relative; width: 100%; }
+.thumbnail .image-wrapper img.portrait { height: 100%; width: auto; }

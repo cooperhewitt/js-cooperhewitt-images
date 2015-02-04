@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="jquery.imageGrid.js"></script>
+
+    <script type="text/javascript">
+      $(window).load(function(){
+        $('#imageGrid').imageGrid();
+      });
+    </script>
+
+    <link rel="stylesheet" href="cooperhewitt.images.css">
+  </head>
+
+  <body>
+    <ul id="imageGrid" class="thumbnails" data-mouseout-image-size="out" data-mouseout-class-name="out" data-mouseover-image-size="over" data-mouseover-class-name="over">
+      <li class="thumbnail">
+	<a href="#">
+	  <img class="out" src="/images/01_out.jpg" data-allow-redraw />
+	</a>
+      </li>
+    </ul>
+  </body>
+</html>
