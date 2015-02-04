@@ -8,11 +8,11 @@ Image layout functionality as used on the [Cooper Hewitt Online Collections](htt
 
 ```
 <ul id="myImageGrid" class="thumbnails">
-    <li class="thumbnail">
-    	<a href="#">
-	   <img class="out" src="/path/to/image.jpg" data-allow-redraw />
-	</a>
-    </li>
+  <li class="thumbnail">
+    <a href="#">
+      <img class="out" src="/path/to/image.jpg" data-allow-redraw />
+    </a>
+  </li>
 </ul>
 ```
 
