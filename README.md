@@ -53,5 +53,5 @@ You can configure some parameters using the `data` attributes on `.picture-holde
 The code will toggle two class names, `expanded` and `collapsed`, on clicking the image. Style them accordingly.
 
 ### Other notes:
-*The source of the full-sized image should be the one set as the `src` of the `<img>` element. This way, the page won't look broken for non-JS users.
-*You should invoke this code from within `$(document).ready()` so that the code can add in the loading image before it loads the fullsized one.
+* The source of the full-sized image should be the one set as the `src` of the `<img>` element. This way, the page won't look broken for non-JS users.
+* You should invoke this code from within `$(document).ready()` so that the code can add in the loading image before it loads the fullsized one.
