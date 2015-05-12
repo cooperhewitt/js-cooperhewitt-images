@@ -36,7 +36,7 @@ While the thumbnails are always square, they are capable of displaying non-squar
 
 ## Image Preloading and Resizing: `jquery.imageDisplayer.js`
 
-`jquery.imageDisplayer.js` allows users with JS enabled to see a low-res image while they are waiting for the full one to load. On load, it allows them to toggle between a collapsed and expanded state. It assumes your markup is structured like this:
+`jquery.imageDisplayer.js` allows users with JS enabled to see a low-res image while they are waiting for the full one to load. On load, it allows them to toggle between a collapsed and expanded state. It also can adjust the height of the collapsed image to match the window height. It assumes your markup is structured like this:
 
 ```
 <div id="myImageDisplayer" class="picture-holder" data-image-full-src="images/cat_full.jpg" data-image-loading-src="images/cat_load.gif">
@@ -48,6 +48,15 @@ While the thumbnails are always square, they are capable of displaying non-squar
 
 You can configure some parameters using the `data` attributes on `.picture-holder`:
 * `data-image-loading-src`: The source of the image to use while the big one is loading.
+
+You can invoke it with `$('#myImageDisplayer').imageDisplayer()`. The `imageDisplayer` accepts an options object:
+
+```
+{
+	clickToScale: allow toggling between full/small sized images on click. defaults to true
+	fitToFold: scale the small image to always match the window's innerHeight. defaults to false 
+}
+```
 
 ## Expanding / Collapsing
 The code will toggle two class names, `expanded` and `collapsed`, on clicking the image. Style them accordingly.

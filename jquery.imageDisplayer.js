@@ -7,7 +7,7 @@
 
 	It also applies scaling code that toggles between a scaled and unscaled image on click.
 	*/
-	var _initImageDisplayer = function($el) {
+	var _initImageDisplayer = function($el, opts) {
 		$image = $el.find("img");
 
 		if($image.length == 0 || ! $image.is('[data-allow-redraw]')) return;
@@ -19,7 +19,6 @@
 		//add loading image
 		var $loadingImage = $('<img />');
 		$loadingImage
-//			.addClass('img-responsive')
 			.attr('src', loadImageSrc)
 			.insertAfter($image);
 
@@ -29,18 +28,31 @@
 		//add load listener to full size img
 		$image.on('load', function() {
 			//hide dither, show full size
-			$loadingImage.addClass('hidden');
 			$image.addClass('collapsed').removeClass('hidden');
+			$loadingImage.addClass('hidden');
 
 			//if the image being loaded is the error image, don't continue to implement scaling functionality
 			if($image.data('load-error')) return;
 
 			//toggle between full/scaled on click
-			$image.parent('a').on('click', function(e) {
-				e.preventDefault();
-				$image.toggleClass('expanded collapsed');
-				_scaleImage($image);
-			});
+			if (opts['clickToScale']) {
+				$image.parent('a').on('click', function(e) {
+					e.preventDefault();
+					$image.toggleClass('expanded collapsed');
+					$(window).resize();
+				});
+			}
+
+			//bind resize
+			if (opts['fitToFold']) {
+				$(window).on('resize', function(e) {			
+					if ($image.hasClass('collapsed')) {
+						$image.css('height', window.innerHeight);
+					} else if ($image.hasClass('expanded')) {
+						$image.css('height', 'inherit');
+					}
+				}).trigger('resize');
+			}
 		});
 
 		//add full size back to kick off load
@@ -48,7 +60,14 @@
 		$image.addClass('hidden').attr('src', '').attr('src', imageSrc).insertBefore($loadingImage);
 	};
 
-	$.fn.imageDisplayer = function() {
-		_initImageDisplayer(this);
+	$.fn.imageDisplayer = function(opts) {
+		if (!opts) {
+			opts = {
+				clickToScale: true,
+				fitToFold: false
+			}
+		};
+
+		_initImageDisplayer(this, opts);
 	};
 })(jQuery);
