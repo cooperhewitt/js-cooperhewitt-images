@@ -47,7 +47,14 @@
 			if (opts['fitToFold']) {
 				$(window).on('resize', function(e) {			
 					if ($image.hasClass('collapsed')) {
-						$image.css('height', window.innerHeight);
+
+                                            	var ih = $image.naturalHeight();
+                                            	var wh = window.innerHeight;
+					    
+                                            	if (ih > wh){
+						     $image.css('height', wh);
+					        }
+
 					} else if ($image.hasClass('expanded')) {
 						$image.css('height', 'inherit');
 					}
